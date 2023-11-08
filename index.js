@@ -11,8 +11,7 @@ btn.addEventListener("click", () => {
   gradientText.classList.add("grad-text");
   const colorName1 = getColorName(gradientColors.color1);
   const colorName2 = getColorName(gradientColors.color2);
-  gradientText.innerHTML =
-     `<h4>Gradient Colors: ${colorName1}, ${colorName2}</h4>
+  gradientText.innerHTML = `<h4>Gradient Colors: ${colorName1}, ${colorName2}</h4>
      <h4>HSL: ${gradientColors.color1} ${gradientColors.color2}</h4>`;
 
   //   gradientText.innerText = `Gradient Colors: ${gradientColors.color1}, ${gradientColors.color2}`;
@@ -26,9 +25,10 @@ function randomGradientBg() {
   const angle = Math.floor(Math.random() * 361); // Random angle between 0 and 360
   const color1 = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
   const color2 = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
+  const color3 = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
 
   return {
-    gradient: `linear-gradient(${angle}deg, ${color1}, ${color2})`,
+    gradient: `linear-gradient(${angle}deg, ${color1}, ${color2}`,
     color1: color1,
     color2: color2,
   };
