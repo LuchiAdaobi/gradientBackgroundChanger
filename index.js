@@ -40,6 +40,8 @@ function getColorName(color) {
 
   if (hue >= 0 && hue < 30) {
     return "Red";
+  } else if (hue >= 15 && hue < 45) {
+    return "Orange";
   } else if (hue >= 30 && hue < 90) {
     return "Yellow";
   } else if (hue >= 90 && hue < 150) {
@@ -48,8 +50,14 @@ function getColorName(color) {
     return "Cyan";
   } else if (hue >= 210 && hue < 270) {
     return "Blue";
+  } else if (hue >= 240 && hue < 300) {
+    return "Purple";
+  } else if (hue >= 255 && hue < 285) {
+    return "Indigo";
   } else if (hue >= 270 && hue < 330) {
     return "Magenta";
+  } else if (hue >= 330 && hue < 345) {
+    return "Pink";
   } else {
     return "Red";
   }
