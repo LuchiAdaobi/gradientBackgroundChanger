@@ -21,13 +21,14 @@ btn.addEventListener("click", () => {
 
 function randomWaveGradientBg() {
   let color1, color2;
+  const angle = Math.floor(Math.random() * 361);
   do {
     color1 = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
     color2 = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
   } while (areColorsTooClose(color1, color2));
 
   return {
-    gradient: `linear-gradient(45deg, ${color1} 0%, ${color2} 20%, ${color1} 40%, ${color2} 60%, ${color1} 80%, ${color2} 100%)`,
+    gradient: `linear-gradient(${angle}deg, ${color1}, ${color2}`,
     color1: color1,
     color2: color2,
   };

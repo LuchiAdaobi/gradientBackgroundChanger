@@ -63,6 +63,8 @@ function getColorName(color) {
   }
 }
 
+// gradient: `linear-gradient(45deg, ${color1} 0%, ${color2} 20%, ${color1} 40%, ${color2} 60%, ${color1} 80%, ${color2} 100%)`,
+
 // function randomWaveGradientBg() {
 //   const color1 = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
 //   const color2 = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
