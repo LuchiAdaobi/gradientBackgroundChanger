@@ -2,7 +2,7 @@ const btn = document.getElementById("btn");
 const gradientCont = document.getElementById("gradient-container");
 
 btn.addEventListener("click", () => {
-  const gradientColors = randomGradientBg();
+  const gradientColors = randomWaveGradientBg();
   document.body.style.background = gradientColors.gradient;
 
   gradientCont.innerHTML = "";
@@ -14,24 +14,34 @@ btn.addEventListener("click", () => {
   gradientText.innerHTML = `<h4>Gradient Colors: ${colorName1}, ${colorName2}</h4>
      <h4>HSL: ${gradientColors.color1} ${gradientColors.color2}</h4>`;
 
-  //   gradientText.innerText = `Gradient Colors: ${gradientColors.color1}, ${gradientColors.color2}`;
-
   gradientText.style.color = "rgb(26, 10, 71)";
 
   gradientCont.appendChild(gradientText);
 });
 
-function randomGradientBg() {
-  const angle = Math.floor(Math.random() * 361); // Random angle between 0 and 360
-  const color1 = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
-  const color2 = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
-  const color3 = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
+function randomWaveGradientBg() {
+  let color1, color2;
+  do {
+    color1 = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
+    color2 = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
+  } while (areColorsTooClose(color1, color2));
 
   return {
-    gradient: `linear-gradient(${angle}deg, ${color1}, ${color2}`,
+    gradient: `linear-gradient(45deg, ${color1} 0%, ${color2} 20%, ${color1} 40%, ${color2} 60%, ${color1} 80%, ${color2} 100%)`,
     color1: color1,
     color2: color2,
   };
+}
+
+function areColorsTooClose(color1, color2) {
+  const hslValues1 = color1.match(/\d+/g).map(Number);
+  const hslValues2 = color2.match(/\d+/g).map(Number);
+  const hue1 = hslValues1[0];
+  const hue2 = hslValues2[0];
+
+  const threshold = 99; // Adjust the threshold as needed
+
+  return Math.abs(hue1 - hue2) < threshold;
 }
 
 function getColorName(color) {
